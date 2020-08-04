@@ -49,7 +49,7 @@ class DBNetTrainer():
                 min_loss = mean_loss
                 torch.save(self.dbnet.state_dict(), 'model/model_epoch_{}_loss_{:.4f}.pth'.format(ep, mean_loss))
 
-            if ep%2==0 and ep>=0:
+            if ep%2==0 and ep>=10:
                 self.validate(indices[0:1])
 
 
@@ -107,6 +107,5 @@ class DBNetTrainer():
 
 
 if __name__ == '__main__':
-    dbnt = DBNetTrainer('data/sroie/ocr',1,1200,checkpoint='model/model_epoch_53_loss_0.9771.pth'
-                                                           '')
+    dbnt = DBNetTrainer('data/sroie/ocr',1,1200,checkpoint=None)
     dbnt.run()
